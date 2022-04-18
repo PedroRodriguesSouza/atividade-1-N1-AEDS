@@ -6,12 +6,13 @@ using namespace std;
 void CriaMatriz(Matriz &, int, int);
 void ImprimeMatriz(Matriz);
 void ApagaMatriz(Matriz &);
-void AtribuiValor(Matriz&, int, int, float);
+void AtribuiValor(Matriz, int, int, float);
 int Linhas(Matriz);
 int Colunas(Matriz);
 float SomaMatriz(Matriz);
 float MaxMatriz(Matriz);
 void LinhaExata(Matriz);
+void ColunaExata(Matriz);
 
 
 void CriaMatriz(Matriz &m, int lin, int col)
@@ -55,44 +56,9 @@ void ApagaMatriz(Matriz &m)
     delete[] m.mat;
 }
 
-void LinhaExata(Matriz m)
+void AtribuiValor(Matriz m, int lin, int col, float n)
 {
-    int i;
-
-    cout << endl;
-    cout << "Digite qual linha da matriz que deseja imprimir: " << endl;
-    cin >> i;
-
-    if(i > m.lin)
-    {
-        cout << "A matriz informada possui apenas " << m.lin << " linhas." << endl << endl;
-        LinhaExata(m);
-    }
-    else
-        for(int j=0; j<m.col; j++)
-            cout << m.mat[i-1][j] << " ";
-
-    cout << endl;
-}
-
-void ColunaExata(Matriz m)
-{
-    int j;
-
-    cout << endl;
-    cout << "Digite qual coluna da matriz que deseja imprimir: " << endl;
-    cin >> j;
-
-    if(j > m.col)
-    {
-        cout << "A matriz informada possui apenas " << m.col << " colunas." << endl << endl;
-        colunaExata(m);
-    }
-    else
-        for(int i=0; i<m.lin; i++)
-            cout << m.mat[i][j-1] << " ";
-
-    cout << endl;
+    m.mat[lin][col] = n;
 }
 
 int Linhas(Matriz m)
@@ -134,10 +100,41 @@ float MaxMatriz(Matriz m)
     return aux;
 }
 
-void AtribuiValor(Matriz m, int lin, int col, float n)
+void LinhaExata(Matriz m)
 {
-    m.mat[lin-1][col-1] = n;
+    int i;
+
+    cout << endl;
+    cout << "Digite qual linha da matriz que deseja imprimir: " << endl;
+    cin >> i;
+
+    if(i > m.lin)
+    {
+        cout << "A matriz informada possui apenas " << m.lin << " linhas." << endl << endl;
+        LinhaExata(m);
+    }
+    else
+        for(int j=0; j<m.col; j++)
+            cout << m.mat[i-1][j] << " ";
+
+    cout << endl;
 }
 
+void ColunaExata(Matriz m)
+{
+    int j;
 
+    cout << endl;
+    cout << "Digite qual coluna da matriz que deseja imprimir: " << endl;
+    cin >> j;
 
+    if(j > m.col)
+    {
+        cout << "A matriz informada possui apenas " << m.col << " colunas." << endl << endl;
+        ColunaExata(m);
+    }
+    else
+        for(int i=0; i<m.lin; i++)
+            cout << m.mat[i][j-1] << endl;
+    cout << endl;
+}
