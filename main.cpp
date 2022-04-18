@@ -1,3 +1,13 @@
+/*
+DUPLA:
+
+Matheus Idjarurir Santos Miranda 
+2020022448
+
+Pedro Augusto Rodrigues Souza 
+2020013082
+*/
+
 #include <iostream>
 #include "matriz.h"
 
@@ -16,9 +26,6 @@ int main()
 
     CriaMatriz(matriz, l, c);
     ImprimeMatriz(matriz);
-    AtribuiValor(matriz, 2, 2, 9);
-    //LinhaExata(matriz);
-    //ColunaExata(matriz);
     nlin = Linhas(matriz);
     ncol = Colunas(matriz);
     soma = SomaMatriz(matriz);
